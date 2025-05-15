@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "lib": ["DOM", "ES2015"],
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "strict": true,
+    "target": "ES6"
+  }
+}

@@ -1,0 +1,182 @@
+// Import core styles
+@use '../../node_modules/@tweakpane/core/lib/sass/tp';
+
+.#{tp.$prefix}-itemlistv {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 4px 0;
+
+	&_options-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	&_trigger {
+		@extend %tp-input;
+		flex: 1 1 auto;
+		min-width: 0;
+		height: 24px;
+		padding: 4px 8px;
+		text-align: center;
+		background-color: tp.cssVar('input-bg');
+		color: tp.cssVar('input-fg');
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 8px center;
+		background-size: 16px;
+		padding-right: 32px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		border-radius: 4px 4px 0 0;
+		transition: border-color 0.2s ease;
+		font-size: 12px;
+		line-height: 1;
+	}
+
+	&_options {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		width: calc(100% - border*2);
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background-color: #2a2b30;
+		border-radius: 0 0 4px 4px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+		border: 1px solid #3a3b40;
+		border-top: none;
+
+		&.tp-itemlistv_options--active {
+			display: flex;
+		}
+	}
+
+	&_option {
+		padding: 4px 8px;
+		text-align: left;
+		font-size: 12px;
+		line-height: 1.2;
+		color: lightgray;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		min-height: 20px;
+		display: flex;
+		align-items: center;
+		background-color: #2a2b30;
+		gap: 8px;
+
+		&:hover {
+			background-color: rgb(129, 129, 129);
+		}
+
+		&:last-child {
+			border-radius: 0 0 4px 4px;
+		}
+
+		&--selected {
+			.tp-itemlistv_checkmark {
+				opacity: 1;
+			}
+		}
+	}
+
+	&_checkmark {
+		opacity: 0;
+		color: tp.cssVar('input-fg');
+		font-size: 14px;
+		transition: opacity 0.2s ease;
+	}
+
+	&_option-text {
+		flex: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&_list {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-height: 24px;
+		background-color: tp.cssVar('input-bg');
+		padding: 8px;
+		transition: all 0.2s ease;
+		border-radius: 4px;
+
+		&--dragover {
+			border: 2px dashed var(--tp-plugin-item-list-dragging-color);
+			background: rgba(74, 144, 226, 0.05);
+			opacity: 1;
+		}
+	}
+
+	&_row-wrap {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	&_row {
+		@extend %tp-input;
+		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+		padding: 4px 8px;
+		min-height: 24px;
+	}
+
+	&_value {
+		flex: 1 1 auto;
+		text-align: center;
+		font-weight: 500;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: tp.cssVar('input-fg');
+	}
+
+	&_remove-btn {
+		@extend %tp-button;
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px;
+		transition: all 0.2s ease;
+		background-color: tp.cssVar('input-bg');
+		border-radius: 4px;
+		color: tp.cssVar('input-fg');
+
+		&:hover {
+			background-color: tp.cssVar('input-fg');
+			color: tp.cssVar('base-bg');
+		}
+	}
+
+	&_empty {
+		text-align: center;
+		color: tp.cssVar('input-fg');
+		opacity: 0.5;
+		padding: 4px 0;
+		font-size: 12px;
+	}
+}
